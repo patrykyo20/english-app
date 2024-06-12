@@ -27,13 +27,23 @@
     color: $color-headline;
   }
 
+  &__navigation {
+    font-size: 16px;
+    font-weight: 700;
+    color: $color-primary;
+    text-decoration: none;
+  }
+
   &__paragraph {
     font-size: 28px;
     color: $color-primary;
-    line-height: 4.7px;
 
     &--button {
       color: $color-white;
+      font-weight: 700;
+    }
+
+    &--logo {
       font-weight: 700;
     }
   }
