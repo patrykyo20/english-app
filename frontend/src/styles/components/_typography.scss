@@ -1,0 +1,40 @@
+@import '../utils/variables';
+
+.typography {
+  &__title {
+    font-weight: 700;
+    line-height: 10px;
+
+    &--primary {
+      font-size: 54px;
+      color: $color-primary;
+    }
+
+    &--secondary {
+      font-size: 40px;
+      color: $color-primary;
+    }
+
+    &--card {
+      font-size: 20px;
+      color: $color-white;
+    }
+  }
+
+  &__headline {
+    font-size: 18px;
+    font-weight: 700;
+    color: $color-headline;
+  }
+
+  &__paragraph {
+    font-size: 28px;
+    color: $color-primary;
+    line-height: 4.7px;
+
+    &--button {
+      color: $color-white;
+      font-weight: 700;
+    }
+  }
+}
