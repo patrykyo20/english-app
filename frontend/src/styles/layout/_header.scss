@@ -1,0 +1,15 @@
+@import '../utils/variables';
+@import '../utils/mixins';
+
+.header { 
+  position: sticky;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  background-color: $color-background;
+  padding: 40px 20px;
+
+  @include respond-to(small) {
+    padding: 40px;
+  }
+}
