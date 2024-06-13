@@ -1,0 +1,11 @@
+.container {
+  padding: 20px;
+
+  @include respond-to(large) {
+    width: 1280px;
+  }
+
+  @include respond-to(small) {
+    padding: 30px;
+  }
+}
