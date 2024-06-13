@@ -3,8 +3,14 @@
 $color-primary: #161C2D;
 $color-secondary: #473BF0;
 $color-tertiary: #68D585;
-$color-headline: #FF7171;
+$color-headline: #F64B4B;
 $color-light: #F4F7FA;
 $color-white: #ffffff;
-$color-background: #294BA1;
+$color-background: #F4F7FA;
+
+// breakpoints
+
+$breakpoint-small: 428px;
+$breakpoint-medium: 768px;
+$breakpoint-large: 1024px;
 
