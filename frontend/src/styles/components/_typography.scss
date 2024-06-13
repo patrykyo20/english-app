@@ -1,13 +1,29 @@
 @import '../utils/variables';
+@import '../utils/mixins';
 
 .typography {
   &__title {
-    font-weight: 700;
-    line-height: 10px;
+    font-weight: 900;
 
     &--primary {
-      font-size: 54px;
       color: $color-primary;
+      line-height: 38px;
+      font-size: 34px;
+
+      @include respond-to(small) {
+        font-size: 44px;
+        line-height: 44px;
+      }
+
+      @include respond-to(medium) {
+        font-size: 50px;
+        line-height: 64px;
+      }
+
+      @include respond-to(large) {
+        font-size: 54px;
+        line-height: 78px;
+      }
     }
 
     &--secondary {
@@ -28,10 +44,14 @@
   }
 
   &__navigation {
-    font-size: 16px;
+    font-size: 12px;
     font-weight: 700;
     color: $color-primary;
     text-decoration: none;
+  
+    @include respond-to(medium) {
+      font-size: 16px;
+    }
   }
 
   &__paragraph {
@@ -45,6 +65,18 @@
 
     &--logo {
       font-weight: 700;
+    }
+
+    &--description {
+      font-size: 16px;
+      font-weight: 300;
+      letter-spacing: 2px;
+      line-height: 30px;
+
+        
+      @include respond-to(medium) {
+        font-size: 18px;
+      }
     }
   }
 }
