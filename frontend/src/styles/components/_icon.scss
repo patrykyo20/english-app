@@ -1,0 +1,66 @@
+.icon {
+  &--dots {
+    position: absolute;
+    left: 0;
+  
+    @include respond-to(small) {
+      left: 0;
+    }
+
+    @include respond-to(medium) {
+      left: 10%;
+    }
+  }
+
+  &--round {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    width: 50px;
+
+    @include respond-to(small) {
+      bottom: 0;
+      left: 0;
+      width: 150px;
+    }
+
+    @include respond-to(medium) {
+      bottom: 10%;
+      left: 10%;
+      width: 150px;
+    }
+  
+    @include respond-to(large) {
+      bottom: 0;
+      left: 0;
+      width: 150px;
+    }
+  }
+
+  &--waves {
+    position: absolute;
+    right: 5%;
+    bottom: 10%;
+    z-index: 2;
+    width: 20px;  
+
+    @include respond-to(small) {
+      right: 10%;
+      bottom: 10%;
+      width: 50px;
+    }
+
+    @include respond-to(medium) {
+      right: 15%;
+      bottom: 10%;
+      width: 80px;
+    }
+  
+    @include respond-to(large) {
+      right: 0;
+      bottom: 10%;
+      width: 100px;
+    }
+  }
+}
