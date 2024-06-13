@@ -31,6 +31,12 @@
     }
   }
 
+  &__menu {
+    @include respond-to(medium) {
+      display: none;
+    }
+  }
+
   &__login {
     display: none;
 
