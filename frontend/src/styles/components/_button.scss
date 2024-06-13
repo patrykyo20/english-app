@@ -1,0 +1,33 @@
+@import '../utils/mixins';
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $color-white;
+  background-color: $color-secondary;
+  padding: 18px 20px;
+  min-width: 80px;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 600;
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  transition: 0.5s;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 1px 1px 15px $color-secondary;
+  }
+
+  @include respond-to(large) {
+    font-size: 16px;
+    padding: 18px 30px;
+  }
+
+  @include respond-to(medium) {
+    min-width: 130px;
+    padding: 18px 20px;
+  }
+}
