@@ -2,6 +2,15 @@
 
 @import 'reset';
 
-@import 'components/typography';
+// layout
+
 @import 'layout/header';
 @import 'layout/navigation';
+@import 'layout/hero';
+
+// components
+
+@import 'components/typography';
+@import 'components/container';
+@import 'components/button';
+@import 'components/icon';
