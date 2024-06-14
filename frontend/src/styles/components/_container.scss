@@ -3,6 +3,7 @@
 
   @include respond-to(large) {
     width: 1280px;
+    padding: 0px;
   }
 
   @include respond-to(small) {
