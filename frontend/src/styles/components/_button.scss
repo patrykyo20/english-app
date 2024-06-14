@@ -18,7 +18,7 @@
   cursor: pointer;
 
   &:hover {
-    box-shadow: 1px 1px 15px $color-secondary;
+    box-shadow: 0.01px 0.01px 6px $color-secondary;
   }
 
   @include respond-to(large) {
