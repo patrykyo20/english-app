@@ -1,0 +1,27 @@
+.service {
+  min-height: 100vh;
+  display: grid;
+  justify-content: center;
+  background-color: white;
+  padding: 144px 0;
+
+  &__title {
+    margin-top: 20px;
+  };
+
+  &__container {
+    display: grid;
+    justify-content: center;
+    gap: 32px;
+    grid-auto-columns: auto;
+
+    @include respond-to(large) {
+      grid-template-columns: repeat(3, 1fr);
+      justify-content: space-between;
+    }
+  }
+
+  &__cards {
+    margin-top: 56px;
+  }
+};
