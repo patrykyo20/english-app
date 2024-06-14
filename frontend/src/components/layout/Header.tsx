@@ -2,6 +2,7 @@ import Link from "next/link";
 import Button from "../ui/Button";
 import Image from "next/image";
 import { FC } from "react";
+import Navigation from "../ui/Navigation";
 
 interface HeaderProps {
   burgerOption?: 'menu' | 'header';
@@ -10,21 +11,7 @@ interface HeaderProps {
 const Header: FC<HeaderProps> = ({ burgerOption = 'menu' }) => {
   return (
     <header className="header" id="header">
-      <nav className="navigation">
-        <p className="typography__paragraph typography__paragraph--logo">English.io</p>
-        <ul className="navigation__list">
-          <li>
-            <Link href="#"  className="typography__navigation">
-              About Us
-            </Link>
-          </li>
-          <li>
-            <Link href="#" className="typography__navigation">
-              Contact
-            </Link>
-          </li>
-        </ul>
-      </nav>
+      <Navigation variant={"dark"} />
       <div className="navigation__login">
         <Link href='/login'>
           <Button title={"Login"} />
