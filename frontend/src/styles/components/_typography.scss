@@ -52,6 +52,10 @@
     @include respond-to(medium) {
       font-size: 16px;
     }
+
+    &--light {
+      color: $color-white;
+    }
   }
 
   &__paragraph {
@@ -61,6 +65,22 @@
     &--button {
       color: $color-white;
       font-weight: 700;
+    }
+  
+    &--description {
+      font-size: 16px;
+      font-weight: 200;
+    }
+  
+    &--card {
+      color: $color-white;
+      font-size: 16px;
+      font-weight: 200;
+      letter-spacing: 1.2px;
+    }
+
+    &--light {
+      color: $color-white;
     }
 
     &--logo {
@@ -78,5 +98,9 @@
         font-size: 18px;
       }
     }
+  }
+
+  &--center {
+    text-align: center;
   }
 }
