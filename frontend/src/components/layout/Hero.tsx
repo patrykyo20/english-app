@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Button from "../ui/Button";
 import Image from "next/image";
 
@@ -13,10 +14,12 @@ const Hero = () => {
           <p className="typography__paragraph--description hero__paragraph">
             With English io you can improve your English by 100% in the shortest possible time
           </p>
-          <Button
-            title={"Get start learning"}
-            className="hero__button"
-          />
+          <Link href={"#OurService"}>
+            <Button
+              title={"Get start learning"}
+              className="hero__button"
+            />
+          </Link>
         </div>
         <div className="hero__element--item2">
           <Image
