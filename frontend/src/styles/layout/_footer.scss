@@ -1,0 +1,12 @@
+@import '../utils/variables';
+
+.footer {
+  width: 100%;
+  background-color: $color-primary;
+  box-sizing: border-box;
+  padding: 40px 20px;
+
+  @include respond-to(large) {
+    padding: 40px;
+  }
+}
