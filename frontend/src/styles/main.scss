@@ -8,6 +8,8 @@
 @import 'layout/navigation';
 @import 'layout/hero';
 @import 'layout/menu';
+@import 'layout/ourService';
+@import 'layout/footer';
 
 // components
 
@@ -15,3 +17,11 @@
 @import 'components/container';
 @import 'components/button';
 @import 'components/icon';
+@import 'components/card';
+
+// global styles
+
+html {
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+}
