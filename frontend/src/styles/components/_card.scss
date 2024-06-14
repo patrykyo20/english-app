@@ -1,0 +1,48 @@
+.card {
+  padding: 64px 24px;
+  border-radius: 15px;
+  max-width: 360px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  &__image {
+    width: 100%;
+    height: auto;
+    max-width: 150px;
+  }
+
+  &--quiz {
+    background-color: $color-tertiary;
+  }
+
+  &--sentences {
+    background-color: $color-secondary;
+  }
+
+  &--grammar {
+    background-color: $color-headline;
+  }
+
+  &__title {
+    margin-top: 46px;
+    text-transform: capitalize;
+  }
+
+  &__paragraph {
+    margin-top: 20px;
+  }
+
+  &__link {
+    margin-top: 52px;
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: 0.7s;
+
+    &:hover {
+      letter-spacing: 1.5px;
+    }
+  }
+}
