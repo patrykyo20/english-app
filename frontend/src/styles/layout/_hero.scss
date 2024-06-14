@@ -12,6 +12,7 @@
     display: grid;
     align-items: center;
     justify-content: space-between;
+    gap: 70px;
 
     @include respond-to(large) {
       grid-template-columns: 45% 40%;
