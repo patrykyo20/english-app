@@ -1,0 +1,15 @@
+@import '../utils/variables';
+
+.input {
+  outline: none;
+  border: none;
+  padding: 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+  box-shadow: 1px 1px 5px $color-shadow;
+
+  &::placeholder {
+    font-size: 16px;
+  }
+}
