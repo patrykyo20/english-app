@@ -1,0 +1,31 @@
+@import '../utils/variables';
+
+.login {
+  min-height: 90vh;
+  display: grid;
+  place-content: center;
+  gap: 50px;
+
+  &__form {
+    min-width: 640px;
+    display: flex;
+    flex-direction: column;
+    gap: 70px;
+    padding: 60px 80px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 15px $color-white;
+    background-color: $color-background;
+    box-shadow: 1px 1px 15px $color-shadow;
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__label {
+    font-size: 20px;
+    font-weight: 600;
+  }
+}
