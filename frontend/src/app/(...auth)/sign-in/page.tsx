@@ -1,13 +1,12 @@
 'use client'
 
-import { signIn } from "@/api/authentication";
 import Button from "@/components/ui/Button";
 import FormField from "@/components/ui/FormField";
-import { useUserContext } from "@/context/userProvider";
-import { ChangeEvent, useState } from "react";
+import useAuth from '@/utils/auth'; 
+import { ChangeEvent, FormEvent, useState } from "react";
 
 const SignIn = () => {
-  const { setUser, setToken } = useUserContext();
+  const { auth } = useAuth();
 
   const [authData, setAuthData] = useState({
     email: '',
@@ -15,25 +14,17 @@ const SignIn = () => {
   });
 
 
-  const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleFormSubmit = async (
+    e: FormEvent<HTMLFormElement>,
+    type: 'login' | 'register'
+  ) => {
     e.preventDefault();
-
-    try {
-      const response = await signIn(authData);
-      if (response.jwt && response.user) {
-        setToken(response.jwt);
-        setUser(response.user);
-      } else {
-        throw new Error('Invalid response structure');
-      }
-    } catch (error) {
-      console.error('Error during sign-in:', error);
-    }
+    auth(type, authData);
   };
 
   return (
     <main className="login">
-      <form className="login__form" onSubmit={handleFormSubmit}>
+      <form className="login__form" onSubmit={(e) => handleFormSubmit(e, 'login')}>
         <h1 className="typography__title typography__title--primary">Login</h1>
         <FormField
           title={"Email"}
@@ -50,6 +41,7 @@ const SignIn = () => {
           onChange={(e: ChangeEvent<HTMLInputElement>) => setAuthData({ ...authData, password: e.target.value })}
         />
         <Button title={"submit"} />
+        <div className="modal"></div>
       </form>
     </main>
   )
