@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_array_answers",
+  "info": {
+    "displayName": "answers"
+  },
+  "options": {},
+  "attributes": {
+    "answer": {
+      "type": "string"
+    }
+  }
+}
