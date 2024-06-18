@@ -2,7 +2,14 @@
 
 import { FC, ReactNode, createContext, useContext, useEffect, useMemo, useState } from "react";
 
-const UserContext = createContext({});
+interface UserContextType {
+  user: any;
+  setUser: (user: any) => void;
+  token: string | null;
+  setToken: (token: string | null) => void;
+}
+
+const UserContext = createContext<UserContextType | undefined>(undefined);
 
 export const UserProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<any>(() => {
@@ -41,7 +48,7 @@ export const UserProvider: FC<{ children: ReactNode }> = ({ children }) => {
     setUser,
     token,
     setToken
-  }), [user, setUser, token, setToken]);
+  }), [user, token]);
 
   return (
     <UserContext.Provider value={memoizedValue}>
