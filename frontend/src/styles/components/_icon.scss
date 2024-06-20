@@ -63,4 +63,11 @@
       width: 100px;
     }
   }
+
+  &--pen {
+    &:hover {
+      cursor: pointer;
+      
+    }
+  }
 }
