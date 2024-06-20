@@ -1,10 +1,19 @@
+import { FC } from "react";
+
 interface ModalProps {
-  variant: 'success' | 'warning' | 'danger';
+  variant: 'success' | 'alert' | 'danger';
   title: string;
 }
 
-const Modal = () => {
-  <div className="modal">
-    
-  </div>
-}
+const Modal: FC<ModalProps> = ({
+  variant,
+  title
+}) => {
+  return (
+    <div className={`modal modal--${variant}`}>
+      <p>{title}</p>
+    </div>
+  );
+};
+
+export default Modal;
