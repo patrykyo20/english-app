@@ -1,6 +1,7 @@
-import { FormEvent } from 'react';
+import { useState } from 'react';
 import { signIn, signUp } from '../api/authentication'; 
 import { useUserContext } from '@/context/userProvider';
+import debounce from './debounce';
 
 interface AuthData {
   username?: string;
@@ -10,6 +11,8 @@ interface AuthData {
 
 const useAuth = () => {
   const { setToken, setUser } = useUserContext();
+  const [error, setError] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   const auth = async (
     type: 'login' | 'register', 
@@ -27,15 +30,21 @@ const useAuth = () => {
       if (response[0] && response[1]) {
         setToken(response[1]);
         setUser(response[0]);
+        setError(false);
+        setSuccess(true);
+        debounce(() => setSuccess(false), 3000)();
       } else {
-        throw new Error('Invalid response structure');
+        setError(true);
+        debounce(() => setError(false), 3000)();
       }
     } catch (error) {
       console.error('Error during authentication:', error);
+      setError(true);
+      debounce(() => setError(false), 3000)();
     }
   };
 
-  return { auth };
+  return { auth, error, success };
 };
 
 export default useAuth;
