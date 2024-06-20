@@ -4,6 +4,7 @@ import Header from '@/components/layout/Header';
 import Footer from "@/components/layout/Footer";
 import '@/styles/main.scss';
 import { UserProvider } from "@/context/userProvider";
+import Menu from "@/components/layout/Menu";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,6 +23,7 @@ export default function RootLayout({
       <html lang="en">
         <body className={inter.className}>
           <Header />
+          <Menu />
           {children}
           <Footer />
         </body>
