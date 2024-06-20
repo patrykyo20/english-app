@@ -4,9 +4,13 @@
   width: 100%;
   background-color: $color-primary;
   box-sizing: border-box;
-  padding: 40px 20px;
+  padding: 30px 20px;
 
-  @include respond-to(large) {
+  @include respond-to(small) {
+    padding: 20px;
+  }
+
+  @include respond-to(small) {
     padding: 40px;
   }
 }
