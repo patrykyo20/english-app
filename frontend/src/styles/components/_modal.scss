@@ -1,4 +1,21 @@
 .modal {
-  padding: 120px;
+  padding: 40px 80px;
+  position: fixed;
+  left: 2%;
+  bottom: 4%;
+  z-index: 3;
+  border-radius: 3px;
+
+  &--danger {
+    background-color: #f8d7da;
+  }
+
+  &--success {
+    background-color: #d4edda;
+  }
+
+  &--alert {
+    background-color: #fff3cd;
+  }
 }
 
