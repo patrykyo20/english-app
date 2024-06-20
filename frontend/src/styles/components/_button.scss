@@ -5,7 +5,6 @@
   justify-content: center;
   align-items: center;
   color: $color-white;
-  background-color: $color-secondary;
   padding: 18px 20px;
   min-width: 80px;
   text-decoration: none;
@@ -17,8 +16,20 @@
   transition: 0.5s;
   cursor: pointer;
 
-  &:hover {
-    box-shadow: 0.01px 0.01px 6px $color-secondary;
+  &--default {
+    background-color: $color-secondary;
+
+    &:hover {
+      box-shadow: 0.01px 0.01px 6px $color-secondary;
+    }
+  }
+
+  &--danger {
+    background-color: $color-headline;
+
+    &:hover {
+      box-shadow: 0.01px 0.01px 6px $color-headline;
+    }
   }
 
   @include respond-to(large) {
