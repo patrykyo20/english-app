@@ -22,8 +22,13 @@
 @import 'components/card';
 @import 'components/input';
 @import 'components/loader';
+@import 'components/modal';
 
 // global styles
+
+* {
+  box-sizing: border-box;
+}
 
 html {
   scroll-behavior: smooth;
