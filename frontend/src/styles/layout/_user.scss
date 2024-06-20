@@ -1,17 +1,68 @@
+@import '../utils/mixins';
+
 .user {
-  padding: 120px;
+  padding: 10px;
   min-height: 80vh;
 
-  display: grid;
-  justify-content: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
   gap: 50px;
+
+  @include respond-to(small) {
+    padding: 40px 20px;
+  }
+
+  @include respond-to(medium) {
+    padding: 120px;
+  }
 
   &__image {
     grid-column: span 1;
+    border-radius: 50%;
+    max-width: 550px;
+    width: 100%;
+    height: auto;
   }
 
   &__info {
-    grid-column: span 1;
+    width: 100%;
+
+    @include respond-to(large) {
+      width: 50%;
+    }
+  }
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__field {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+
+    &--input {
+      min-width: 85%;
+    }
+
+    &--textarea {
+      min-width: 65%;
+
+      @include respond-to(medium) {
+        min-width: 75%;
+      }
+
+      @include respond-to(large) {
+        min-width: 85%;
+      }
+    }
+
+    &--margin {
+      margin-top: 50px;
+    }
   }
 
   &--avatar {
