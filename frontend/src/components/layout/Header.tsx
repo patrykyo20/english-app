@@ -15,6 +15,8 @@ const Header: FC<HeaderProps> = ({ burgerOption = 'menu' }) => {
   const { user } = useUserContext();
   const [client, setClient] = useState(false);
 
+  console.log(user);  
+  
   useEffect(() => {
     setClient(true);
   }, []);
@@ -26,7 +28,7 @@ const Header: FC<HeaderProps> = ({ burgerOption = 'menu' }) => {
         {client && user ? (
           <Link href={`/user-page/${user.data.id}`}>
             <Image
-              src={user.data?.image.formats.medium.url || '/avatar.svg'}
+              src={user.data.url || '/avatar.svg'}
               alt="avatar"
               height={50}
               width={50}
