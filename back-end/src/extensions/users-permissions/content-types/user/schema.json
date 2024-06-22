@@ -81,6 +81,21 @@
     },
     "url": {
       "type": "string"
+    },
+    "quizzes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::quiz.quiz"
+    },
+    "points": {
+      "type": "integer",
+      "unique": false,
+      "min": 0,
+      "required": true,
+      "default": 0
+    },
+    "quizLevel": {
+      "type": "integer"
     }
   }
 }
