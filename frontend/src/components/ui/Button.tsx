@@ -6,6 +6,7 @@ interface ButtonProps {
   title: string;
   onClick?: (e: any) => void;
   className?: string;
+  disabled?: boolean;
 }
 
 const Button: FC<ButtonProps> = ({
@@ -14,12 +15,14 @@ const Button: FC<ButtonProps> = ({
   title,
   onClick,
   className,
+  disabled = false,
 }) => {
   return (
     <button
       onClick={onClick}
       className={`button button--${variant} ${className}`}
       type={type}
+      disabled={disabled}
     >
       {title}
     </button>
