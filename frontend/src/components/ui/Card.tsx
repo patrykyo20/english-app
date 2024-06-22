@@ -5,11 +5,13 @@ import { FC } from "react";
 interface CardProps {
   variant: 'quiz' | 'sentences' | 'grammar';
   description: string;
+  link?: 'quizzes'
 }
 
 const Card: FC<CardProps> = ({
   variant,
   description,
+  link,
 }) => {
   return (
     <article
@@ -28,7 +30,12 @@ const Card: FC<CardProps> = ({
       <p className="typography__paragraph--card typography--center card__paragraph">
         {description}
       </p>
-      <Link href={`/${variant}`} className="typography__paragraph--button card__link">Learn More &#8594;</Link>
+      <Link
+        href={link ? `/${link}` : `/${variant}`}
+        className="typography__paragraph--button card__link"
+      >
+        Learn More &#8594;
+      </Link>
     </article>
   );
 };
