@@ -15,6 +15,7 @@ const OurService = () => {
         <Card
           variant="quiz"
           description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo at veritatis dolor, dolore perspiciatis consequuntur distinctio tempora repellendus"
+          link="quizzes"
         />
         <Card
           variant="sentences"
