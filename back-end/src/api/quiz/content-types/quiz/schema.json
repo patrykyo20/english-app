@@ -19,6 +19,9 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::question.question"
+    },
+    "description": {
+      "type": "string"
     }
   }
 }
