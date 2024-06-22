@@ -1,0 +1,16 @@
+@import '../utils/variables';
+
+.quizAnswer {
+  cursor: pointer;
+  padding: 60px 70px 80px;
+  border-radius: 10px;
+  box-shadow: $shadow $color-shadow;
+
+  &--success {
+    background-color: $color-tertiary;
+  }
+
+  &--danger {
+    background-color: $color-headline;
+  }
+}
