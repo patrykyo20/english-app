@@ -11,6 +11,7 @@
 @import 'layout/ourService';
 @import 'layout/login';
 @import 'layout/user';
+@import 'layout/quizzes';
 @import 'layout/footer';
 
 // components
@@ -23,6 +24,9 @@
 @import 'components/input';
 @import 'components/loader';
 @import 'components/modal';
+@import 'components/quiz';
+@import 'components/quizCard';
+@import 'components/quizAnswer';
 
 // global styles
 
