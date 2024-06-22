@@ -1,0 +1,43 @@
+@import '../utils/variables';
+
+.quizCard {
+  padding: 20px;
+  max-width: 380px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &--success {
+    background-color: $color-tertiary;
+  }
+
+  &--during {
+    background-color: $color-alert;
+  }
+
+  &--blocked {
+    background-color: $color-shadow;
+  }
+
+  &__headline {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__image {
+    margin-top: 30px;
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+  };
+
+  &__description {
+    margin-top: 30px;
+    letter-spacing: 0.5px;
+  }
+
+  &__button {
+    margin-top: 20px;
+  }
+};
