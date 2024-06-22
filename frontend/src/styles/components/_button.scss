@@ -24,6 +24,16 @@
     }
   }
 
+  &--light {
+    background-color: $color-white;
+    color: black;
+
+    &:hover {
+      box-shadow: 0.01px 0.01px 6px $color-white;
+      color: black;
+    }
+  }
+
   &--danger {
     background-color: $color-headline;
 
