@@ -1,5 +1,6 @@
 'use client';
 
+import { getUser } from "@/api/users";
 import { FC, ReactNode, createContext, useContext, useEffect, useMemo, useState } from "react";
 
 interface UserContextType {
@@ -42,6 +43,33 @@ export const UserProvider: FC<{ children: ReactNode }> = ({ children }) => {
       localStorage.removeItem("token");
     }
   }, [token]);
+
+  const initializeUser = async () => {
+    if (typeof window !== "undefined") {
+      const storedToken = localStorage.getItem("token");
+      if (storedToken) {
+        setToken(storedToken);
+        try {
+
+          const response = await getUser(7);
+          if (response.data) {
+            setUser(response);
+            localStorage.setItem("user", JSON.stringify(response));
+          }
+        } catch (error) {
+          console.error("Error fetching user:", error);
+        }
+      }
+    }
+  };
+
+  useEffect(() => {
+
+    if (user) {
+      initializeUser();
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const memoizedValue = useMemo(() => ({
     user,
