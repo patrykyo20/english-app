@@ -1,12 +1,16 @@
 {
   "collectionName": "components_array_answers",
   "info": {
-    "displayName": "answers"
+    "displayName": "answers",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "answer": {
       "type": "string"
+    },
+    "isAnswer": {
+      "type": "boolean"
     }
   }
 }
