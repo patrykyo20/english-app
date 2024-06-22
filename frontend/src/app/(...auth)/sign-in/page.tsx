@@ -55,8 +55,6 @@ const SignIn = () => {
   ) => {
     e.preventDefault();
 
-    console.log('abc')
-
     if (validateFormData()) {
       await auth(type, authData);
     }
