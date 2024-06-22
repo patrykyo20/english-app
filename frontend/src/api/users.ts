@@ -32,9 +32,28 @@ export const updateUser = async (id: number, userData: User) => {
         Authorization: `Bearer ${TOKEN}`,
       },
     });
+
     return response.data;
   } catch (error) {
     console.error('Error updating user:', error);
     throw error;
   }
 };
+
+export const addLevelToUser = async (id: number, quizLevel: number, points: number) => {
+  try {
+    const response = await axios.put(URL + 'users/' + id, {
+      quizLevel,
+      points,
+    }, {
+      headers: {
+        Authorization: `Bearer ${TOKEN}`,
+      },
+    });
+
+    return response.data;
+  } catch (error) {
+    console.error('Error updating user:', error);
+    throw error;
+  }
+}
