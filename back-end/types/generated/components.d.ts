@@ -4,9 +4,11 @@ export interface ArrayAnswers extends Schema.Component {
   collectionName: 'components_array_answers';
   info: {
     displayName: 'answers';
+    description: '';
   };
   attributes: {
     answer: Attribute.String;
+    isAnswer: Attribute.Boolean;
   };
 }
 

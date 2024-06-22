@@ -368,15 +368,16 @@ export interface ApiQuestionQuestion extends Schema.CollectionType {
     singularName: 'question';
     pluralName: 'questions';
     displayName: 'question';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     question: Attribute.String;
-    goodAnswer: Attribute.String;
     answers: Attribute.Component<'array.answers', true>;
     image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    points: Attribute.Integer;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -413,6 +414,7 @@ export interface ApiQuizQuiz extends Schema.CollectionType {
       'oneToMany',
       'api::question.question'
     >;
+    description: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -834,6 +836,21 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
     image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     description: Attribute.Text;
     url: Attribute.String;
+    quizzes: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToMany',
+      'api::quiz.quiz'
+    >;
+    points: Attribute.Integer &
+      Attribute.Required &
+      Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      > &
+      Attribute.DefaultTo<0>;
+    quizLevel: Attribute.Integer;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
