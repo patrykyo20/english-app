@@ -1,0 +1,29 @@
+.quiz {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 90px 270px;
+
+  &__question {
+    margin-top: 50px;
+  }
+
+  &__image {
+    margin: 0 auto;
+    
+    &--margin {
+      margin-top: 50px;
+    }
+  }
+
+  &__answers {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+
+    &--margin {
+      margin-top: 150px;
+    }
+  }
+}
