@@ -2,8 +2,10 @@
 
 import { getQuizzes } from "@/api/quizzes";
 import QuizCard from "@/components/ui/QuizCard";
+import QuizCardSkeleton from "@/components/ui/QuizCardSkeleton";
 import { useUserContext } from "@/context/userProvider";
 import Quiz from "@/types/quiz";
+import debounce from "@/utils/debounce";
 import { useCallback, useEffect, useState } from "react";
 
 const Quizzes = () => {
@@ -11,7 +13,7 @@ const Quizzes = () => {
   const { user } = useUserContext();
 
   const setVariant = (level: number) => {
-    const userLevel = user.data.quizzes.length + 1
+    const userLevel = user.data.quizLevel + 1;
 
     if (userLevel < level) {
       return 'blocked';
@@ -36,18 +38,20 @@ const Quizzes = () => {
   }, []);
 
   useEffect(() => {
-    fetchQuizzes();
+    debounce(() => fetchQuizzes(), 1000)();
   }, [fetchQuizzes]);
-
-  if (!quizzes) {
-    return <div>Loading</div>
-  }
 
   return (
     <section className="quizzes">
-      {quizzes.map(quiz => (
-        <QuizCard quiz={quiz} key={quiz.id} variant={setVariant(quiz.id)} />
-      ))}
+      {quizzes ? (
+        quizzes.map(quiz => (
+          <QuizCard quiz={quiz} key={quiz.id} variant={setVariant(quiz.id)} />
+        ))
+      ) : (
+        Array.from({ length: 4 }, (_, index) => (
+          <QuizCardSkeleton key={index} />
+        ))
+      )}
     </section>
   );
 };
