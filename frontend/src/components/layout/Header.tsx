@@ -14,8 +14,6 @@ interface HeaderProps {
 const Header: FC<HeaderProps> = ({ burgerOption = 'menu' }) => {
   const { user } = useUserContext();
   const [client, setClient] = useState(false);
-
-  console.log(user);  
   
   useEffect(() => {
     setClient(true);
@@ -51,7 +49,7 @@ const Header: FC<HeaderProps> = ({ burgerOption = 'menu' }) => {
         href={`#${burgerOption}`}
       >
         <Image
-          src={"icon-menu.svg"}
+          src={"/icon-menu.svg"}
           alt={"menu"}
           width={35}
           height={35}

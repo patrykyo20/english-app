@@ -33,8 +33,8 @@ const QuizAnswer: FC<QuizAnswerProps> = ({
   return (
     <article
       className={`quizAnswer quizAnswer--${variant} ${userAnswer && answer.isAnswer ? 'quizAnswer--success' : ''}`}
-      onClick={() => onClick(answer)}
-    >
+      onClick={userAnswer ? () => {} : () => onClick(answer)}
+      >
       <p className="quizCard__description typography__paragraph">
         {answer.answer}
       </p>
