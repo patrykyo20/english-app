@@ -11,6 +11,7 @@ import { useUserContext } from "@/context/userProvider";
 import useLogout from "@/utils/logout";
 import Modal from "@/components/ui/Modal";
 import debounce from "@/utils/debounce";
+import Skeleton from "@/components/ui/Skeleton";
 
 const UserPage = ({ params }: {params: { userId: number }}) => {
   const userId = params.userId;
@@ -80,126 +81,90 @@ const UserPage = ({ params }: {params: { userId: number }}) => {
   };
 
   useEffect(() => {
-    setUser();
+    debounce(() => setUser(), 1000)();
   }, [setUser]);
-
-  if (!userData) {
-    return <div>Loading</div>
-  };
 
   return (
     <main className="user">
       {successLogout && <Modal variant={"success"} title={"Successfully logged out"} />}
       {successUpdate && <Modal variant={"success"} title={"Successfully updated data"} />}
-      
-      <Image
-        src={userData.url || '/avatar.svg'}
-        alt={userData?.image?.hash || 'user-image'}
-        height={400}
-        width={400}
-        className="user__image"
-      />
+      {userData ? 
+        <>
+          <Image
+            src={userData.url || '/avatar.svg'}
+            alt={userData?.image?.hash || 'user-image'}
+            height={400}
+            width={400}
+            className="user__image"
+          />
 
-      <form className="user__info" onSubmit={handleUpdateUser}>
-        {user.data.id == userId &&
-          <article className="user__field">
-            <input type="file" id="fileInput" onChange={handleUploadImage} className="input--file" />
-            <label htmlFor="fileInput" className="input__file--custom">
-              change image
-            </label>
-          </article>
-        }
-        <article className="user__field user__field--margin">
-          {!dataChange.email && (
-            <label className="typography__description typography__paragraph">{userData?.email}</label>
-          )}
-        
-          {dataChange.email && (
-            <Input
-              variant="input"
-              value={userData?.email || ''}
-              onChange={(e) => setUserData({ ...userData, email: e.target.value })}
-            />
-          )}
-
-          {user.data.id == userId &&
-            <Image
-              src={'/pen.svg'}
-              alt="pen"
-              width={25}
-              height={25}
-              className="icon--pen"
-              onClick={() => setDataChange({ ...dataChange, email: !dataChange.email })}
-            />
-          }
-        </article>
-        <article className="user__field user__field--margin">
-          {!dataChange.username && (
-            <label className="typography__title--primary typography__title">{userData?.username}</label>
-          )}
-        
-          {dataChange.username && (
-            <Input
-              variant="input"
-              value={userData?.username || ''}
-              onChange={(e) => setUserData({ ...userData, username: e.target.value })}
-            />
-          )}
-
-          {user.data.id == userId &&
-            <Image
-              src={'/pen.svg'}
-              alt="pen"
-              width={25}
-              height={25}
-              className="icon--pen"
-              onClick={() => setDataChange({ ...dataChange, username: !dataChange.username })}
-            />
-          }
-        </article>
-        <article className="user__field user__field--margin">
-          {!dataChange.description && (
-            <label className="typography__description typography__paragraph">{userData?.description}</label>
-          )}
-
-          {dataChange.description && (
-            <Input
-              variant="textarea"
-              value={userData?.description || ''}
-              onChange={(e) => setUserData({ ...userData, description: e.target.value })}
-            />
-          )}
-
-          {user.data.id == userId &&
-            <Image
-              src={'/pen.svg'}
-              alt="pen"
-              width={25}
-              height={25}
-              className="icon--pen"
-              onClick={() => setDataChange({ ...dataChange, description: !dataChange.description })}
-            />
-          }
-        </article>
-        
-        {user.data.id == userId && 
-          <>
-            <p className="typography__description typography__title typography__paragraph user__field--margin">Password</p>
-            <article className="user__field">
-              {!dataChange.password && (
-                <label className="typography__description typography__paragraph">****************</label>
+          <form className="user__info" onSubmit={handleUpdateUser}>
+            {user.data.id == userId &&
+              <article className="user__field">
+                <input type="file" id="fileInput" onChange={handleUploadImage} className="input--file" />
+                <label htmlFor="fileInput" className="input__file--custom">
+                  change image
+                </label>
+              </article>
+            }
+            <article className="user__field user__field--margin">
+              {!dataChange.email && (
+                <label className="typography__description typography__paragraph">{userData?.email}</label>
               )}
             
-              {dataChange.password && (
+              {dataChange.email && (
                 <Input
                   variant="input"
-                  value={userData?.password || ''}
-                  type='password'
-                  placeholder="password..."
-                  onChange={(e) => setUserData({ ...userData, password: e.target.value })}
+                  value={userData?.email || ''}
+                  onChange={(e) => setUserData({ ...userData, email: e.target.value })}
                 />
               )}
-              
+              {user.data.id == userId &&
+                <Image
+                   src={'/pen.svg'}
+                    alt="pen"
+                  width={25}
+                  height={25}
+                    className="icon--pen"
+                  onClick={() => setDataChange({ ...dataChange, email: !dataChange.email })}
+                />
+              }
+            </article>
+            <article className="user__field user__field--margin">
+              {!dataChange.username && (
+                <label className="typography__title--primary typography__title">{userData?.username}</label>
+              )}
+            
+              {dataChange.username && (
+                <Input
+                  variant="input"
+                  value={userData?.username || ''}
+                  onChange={(e) => setUserData({ ...userData, username: e.target.value })}
+                />
+              )}
+
+               {user.data.id == userId &&
+                <Image
+                  src={'/pen.svg'}
+                  alt="pen"
+                  width={25}
+                   height={25}
+                  className="icon--pen"
+                   onClick={() => setDataChange({ ...dataChange, username: !dataChange.username })}
+                />
+              }
+            </article>
+            <article className="user__field user__field--margin">
+              {!dataChange.description && (
+                <label className="typography__description typography__paragraph">{userData?.description}</label>
+              )}
+               {dataChange.description && (
+                <Input
+                  variant="textarea"
+                  value={userData?.description || ''}
+                  onChange={(e) => setUserData({ ...userData, description: e.target.value })}
+                />
+               )}
               {user.data.id == userId &&
                 <Image
                   src={'/pen.svg'}
@@ -207,24 +172,67 @@ const UserPage = ({ params }: {params: { userId: number }}) => {
                   width={25}
                   height={25}
                   className="icon--pen"
-                  onClick={() => setDataChange({ ...dataChange, password: !dataChange.password })}
+                  onClick={() => setDataChange({ ...dataChange, description: !dataChange.description })}
                 />
               }
-            </article> 
-          </>
-        }
+            </article>
+              
+            {user.data.id == userId && 
+              <>
+                <p className="typography__description typography__title typography__paragraph user__field--margin">Password</p>
+                <article className="user__field">
+                  {!dataChange.password && (
+                    <label className="typography__description typography__paragraph">****************</label>
+                  )}
+                
+                  {dataChange.password && (
+                    <Input
+                      variant="input"
+                      value={userData?.password || ''}
+                      type='password'
+                      placeholder="password..."
+                       onChange={(e) => setUserData({ ...userData, password: e.target.value })}
+                     />
+                  )}
+                  
+                  {user.data.id == userId &&
+                    <Image
+                      src={'/pen.svg'}
+                      alt="pen"
+                      width={25}
+                      height={25}
+                      className="icon--pen"
+                      onClick={() => setDataChange({ ...dataChange, password: !dataChange.password })}
+                    />
+                  }
+                </article> 
+              </>
+            }
+            
+            {user.data.id == userId && 
+              <div className="user__field user__field--margin">
+                <Button title={"Logout"} variant={'danger'} onClick={(e: React.MouseEvent<HTMLButtonElement>) => logout(e)} />
+                <Button title={"Apply"} type="submit" />
+              </div>
+            }
+           </form>
+           <div className="user__gain">
+           </div>
+        </>
+      :
+        <>
+          <Skeleton variant={"circle"} type={'image'}  />
+          <Skeleton variant={"rectangular"} width={100} height={5} />
+          <Skeleton variant={"rectangular"} width={100} height={10} />
+          <Skeleton variant={"rectangular"} width={100} height={3} />
+          <Skeleton variant={"rectangular"} width={100} height={5} />
         
-        {user.data.id == userId && 
           <div className="user__field user__field--margin">
-            <Button title={"Logout"} variant={'danger'} onClick={(e: React.MouseEvent<HTMLButtonElement>) => logout(e)} />
-            <Button title={"Apply"} type="submit" />
+            <Skeleton variant={"rectangular"} width={20} height={8} />
+            <Skeleton variant={"rectangular"} width={20} height={8} />
           </div>
-        }
-      </form>
-
-      <div className="user__gain">
-
-      </div>
+        </>
+    }
     </main>
   );
 };
